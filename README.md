@@ -10,12 +10,12 @@ I've configured a GitHub Action to automatically build a Docker container and pu
 
 ````
 # use dockerhub
-docker run -it --rm -v $(pwd):/opt l4rm4nd/goreport --id 26,29-33,54 --format excel --combine
+docker run -it --rm -v $(pwd):/opt l4rm4nd/goreport --id 26,29-33,54 --format excel --combine --config /opt/myconfig.config
 
 # build yourself
 git clone https://github.com/l4rm4nd/Goreport && cd Goreport
 docker build -t goreport .
-docker run -it --rm -v $(pwd):/opt goreport --id 26,29-33,54 --format excel --combine
+docker run -it --rm -v $(pwd):/opt goreport --id 26,29-33,54 --format excel --combine --config /opt/myconfig.config
 ````
 
 ## Goreport Requirements
