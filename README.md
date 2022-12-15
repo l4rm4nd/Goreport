@@ -4,6 +4,20 @@ This script accepts your Gophish campaign ID(s) as a parameter and then collects
 
 A note on statistics: Goreport will report the total number of events and the number of email recipients that participated in each event. In other words, Goreport will show how many times Gophish recorded a "Clicked Link" event and how many recipients clicked a link. These are very different numbers. A campaign sent to 10 people could have 9 Clicked Link events when only 3 recipients clicked a link. Knowing that recipients clicked a link or submitted data more than once is valuable information, but make sure you keep the numbers straight.
 
+## Goreport Docker Usage
+
+I've configured a GitHub Action to automatically build a Docker container and push the image onto Dockerhub. You can use the pre-built image from Dockerhub or build by yourself.
+
+````
+# use dockerhub
+docker run -it --rm -v $(pwd):/opt l4rm4nd/goreport --id 26,29-33,54 --format excel --combine
+
+# build yourself
+git clone https://github.com/l4rm4nd/Goreport && cd Goreport
+docker build -t goreport .
+docker run -it --rm -v $(pwd):/opt goreport --id 26,29-33,54 --format excel --combine
+````
+
 ## Goreport Requirements
 
 This script requires a Gophish server, and active or complete campaign, and the API key for your Gophish application. Get this key by clicking the Settings tab. The API key will be found on the first page. Each Gophish user account has its own API key which acts as the method of authentication for that user to the Gophish API. If you use multiple accounts with Gophish, make sure you grab the correct users API key.
